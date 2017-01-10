@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--IE8/9及以后的版本都会以最高版本IE来渲染页面。-->
+    <link rel="icon" href="img/icon.png">
+    <title>GETTING</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="non-responsive.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="getting.css">
+    <link  rel="stylesheet" href="swiper-3.3.1.min.css">
+    <script src="jquery-3.0.0.min.js"></script>
+  </head>
+
+  <body>
+  <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+          <!--</button>-->
+          <a class="navbar-brand" href="#"><img src="img/LOGO.jpg" style="width:100%"/></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a id="button"  onclick="play()"><img id="img" src="img/begin.jpg" style="width:30px; height:30px"></a>
+          <span class="speech">speech</span>
+        </div>
+      </div>
+    </nav>
+
+  <!-- swiper -->
+    <div class="container">
+      <div class="swiper-container">
+        <div class="swiper-wrapper slider" >
+            <div class="swiper-slide" style="background:#010101;">
+
+                <img  class="swiper-one" src="img/pic1.jpg" style="width:100%"/>
+            </div>
+            <div class="swiper-slide" style="background: #288df9;">
+
+                <img class="swiper-two" src="img/pic2.jpg" style="width:100%" />
+            </div>
+            <div class="swiper-slide" >
+                <img class="swiper-three" src="img/pic3.jpg"  style="width:100%"/>
+            </div>
+            <div class="swiper-slide">
+                <img class="swiper-four" src="img/pic4.jpg" style="width:100%" />
+            </div>
+            <div class="swiper-slide" style="background: #000000;">
+
+                <img class="swiper-five" src="img/pic5.jpg"  style="width:100%"/>
+            </div>
+            <!-- <audio src="Getting Group.m4a" autoplay="autoplay" loop="loop"></audio>
+            <audio src="Hans Zimmer.mp3" autoplay="autoplay" loop="loop"></audio> -->
+            <audio id="music1" src="Getting Group.m4a"></audio>
+            <audio id="music2" src="Hans Zimmer.mp3" autoplay="autoplay" loop="loop"></audio>
+          </div>
+        <div class="swiper-pagination"></div>
+      </div>
+     </div>
+
+  <!--footer -->
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <p>应用下载</p>
+                                </li>
+                                <li><a target="_blank" href="#">Android</a></li>
+                                <li><a target="_blank" href="#">IOS</a></li>
+                                <li><a target="_blank" href="http://www.91elian.com/download.html">了解GETTING</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <p>合作共赢</p>
+                                </li>
+                                <li><a target="_blank" href="#">兄弟公司</a></li>
+                                <li><a target="_blank" href="#">企业文化</a></li>
+                                <li><a target="_blank" href="#">服务领域</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <p style = "    white-space: nowrap">关于GETTING</p>
+                                </li>
+                                <li><a target="_blank" href="#">集团介绍</a></li>
+                                <li><a target="_blank" href="#">成功案例</a></li>
+                                <li><a target="_blank" href="#">加入GETTING</a></li>
+                                <li><a target="_blank" href="#">联系我们</a></li>
+                            </ul>
+                        </div>
+                     </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <ul>
+                                <li class="code_size">
+                                    <img src="img/code-3.png" />
+                                    <p style="margin-left:5%">gettinggroup.com</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul>
+                                <li class="code_size">
+                                    <img src="img/code-4.png" />
+                                    <p style="margin-left: 5%;">GETTING官方微信</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+  <script type="text/javascript" src="swiper-3.3.1.min.js"></script>
+    <script>
+       var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop:true,
+        autoplay:3000
+    });
+       $("#button").click(function(){
+           var music = document.getElementById("music1");
+           if(music.paused){
+               music.play();
+               $("#img").attr("src","img/stop.jpg");
+                  setTimeout(function timer(){
+                  $("#img").attr("src","img/begin.jpg");
+                  swiper.startAutoplay();
+              },48000);
+               swiper.slideTo(3,10,false);
+               swiper.stopAutoplay();
+           }else{
+               music.pause();
+               $("#img").attr("src","img/begin.jpg");
+               swiper.startAutoplay();
+           }
+       });
+    </script>
+  </body>
+</html>
